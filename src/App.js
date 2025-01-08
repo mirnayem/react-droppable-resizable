@@ -6,10 +6,12 @@ import ProductDesign from "./pages/ProductDesign";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product-design" element={<ProductDesign />} />
-    </Routes>
+    <main className="main-content">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product-design" element={<ProductDesign />} />
+      </Routes>
+    </main>
   );
 }
 

@@ -8,13 +8,11 @@ import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AppHeader />
-      <App />
-      <AppFooter />
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <AppHeader />
+    <App />
+    <AppFooter />
+  </BrowserRouter>
 );
 
 reportWebVitals();

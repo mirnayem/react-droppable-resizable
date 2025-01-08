@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../../src/App.css";
 
 const ProductTable = () => {
@@ -57,12 +57,7 @@ const ProductTable = () => {
     setPerPage(Number(e.target.value));
     setCurrentPage(1);
   };
-
-  useEffect(() => {
-    fetchData();
-  }, [search, currentPage, perPage]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await fetch(
         `https://api.razzakfashion.com/?paginate=${perPage}&search=${search}&page=${currentPage}`
@@ -73,7 +68,11 @@ const ProductTable = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, [perPage, currentPage, search]);
+
+  useEffect(() => {
+    fetchData();
+  }, [perPage, search, currentPage, fetchData]);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
